@@ -54,7 +54,7 @@ def setplot(plotdata):
 
     # Figure for sigma
     plotfigure = plotdata.new_plotfigure(name='trace(sigma)', figno=0)
-    plotfigure.show = False
+    #plotfigure.show = False
 
     # Set up for axes in this figure:
     plotaxes = plotfigure.new_plotaxes()
@@ -74,8 +74,8 @@ def setplot(plotdata):
     plotitem = plotaxes.new_plotitem(plot_type='2d_pcolor')
     plotitem.plot_var = sigmatr
     plotitem.pcolor_cmap = colormaps.red_white_blue  
-    plotitem.pcolor_cmin = -.5
-    plotitem.pcolor_cmax = .5
+    plotitem.pcolor_cmin = -.01
+    plotitem.pcolor_cmax = .01
     plotitem.add_colorbar = True
     plotitem.show = True       # show on plot?
     plotitem.amr_celledges_show = [False]
@@ -195,7 +195,11 @@ def setplot(plotdata):
     plotitem.pcolor_cmax = 0.3
     plotitem.add_colorbar = False
     plotitem.amr_celledges_show = [False]
-    plotitem.amr_patchedges_show = [False]
+    plotitem.amr_patchedges_show = [1]
+
+    #plotitem = plotaxes.new_plotitem(plot_type='2d_contour')
+    #plotitem.plot_var = div
+    #plotitem.contour_levels = np.linspace(-0.3,0.3,4)
 
     # Figure for curl:
     # plotfigure = plotdata.new_plotfigure(name='curl', figno=12)
@@ -217,7 +221,7 @@ def setplot(plotdata):
     plotitem.pcolor_cmax = 0.3
     plotitem.add_colorbar = False
     plotitem.amr_celledges_show = [False]
-    plotitem.amr_patchedges_show = [False]
+    plotitem.amr_patchedges_show = [1]
 
     if 0:
         # Set up for item on these axes:
