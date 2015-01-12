@@ -22,24 +22,6 @@ def setplot(plotdata):
 
 
     from clawpack.visclaw import colormaps
-    from matplotlib.colors import LinearSegmentedColormap 
-
-    RGB = np.ones((100,3))
-    for mred in range(10):
-        for mblue in range(10):
-            ind = mred*10 + mblue
-            RGB[ind,0] = 1 - (mblue-1)/9.
-            RGB[ind,1] = max(1 - (mred-1)/9.- (mblue-1)/9., 0)
-            RGB[ind,2] = 1 - (mred-1)/9. 
-
-    x = np.linspace(0,1,100)
-    d = {}
-    d['red'] = [(x[i],RGB[i,0],RGB[i,0]) for i in range(len(x))]
-    d['green'] = [(x[i],RGB[i,1],RGB[i,1]) for i in range(len(x))]
-    d['blue'] = [(x[i],RGB[i,2],RGB[i,2]) for i in range(len(x))]
-
-    RXBmap = LinearSegmentedColormap('RXBmap',d)
-    
 
     plotdata.clearfigures()  # clear any old figures,axes,items data
     
@@ -52,35 +34,9 @@ def setplot(plotdata):
         plot(xl,yl,'k')
     
 
-    # Figure for sigma
-    plotfigure = plotdata.new_plotfigure(name='trace(sigma)', figno=0)
-    #plotfigure.show = False
-
-    # Set up for axes in this figure:
-    plotaxes = plotfigure.new_plotaxes()
-    plotaxes.xlimits = 'auto'
-    plotaxes.ylimits = 'auto'
-    plotaxes.title = 'trace(sigma)'
-    plotaxes.scaled = True
-    plotaxes.afteraxes = plot_interfaces
-    
-
-    # Set up for item on these axes:
-
     def sigmatr(current_data):
         q = current_data.q
         return q[0,:,:] + q[1,:,:]
-
-    plotitem = plotaxes.new_plotitem(plot_type='2d_pcolor')
-    plotitem.plot_var = sigmatr
-    plotitem.pcolor_cmap = colormaps.red_white_blue  
-    plotitem.pcolor_cmin = -.01
-    plotitem.pcolor_cmax = .01
-    plotitem.add_colorbar = True
-    plotitem.show = True       # show on plot?
-    plotitem.amr_celledges_show = [False]
-    plotitem.amr_patchedges_show = [False]
-    
 
     def div(current_data):
         from numpy import array,zeros,hstack,vstack
@@ -133,57 +89,55 @@ def setplot(plotdata):
         c1 = c2[-1,:]
         c = vstack((c0,c2,c1))      
         return c
-        
-    def divcurl(current_data):
-        from pylab import where, ceil
-        dmax = 0.5
-        cmax = 0.5
-        d = abs(div(current_data)) / dmax
-        c = abs(curl(current_data)) / cmax
-        
-        d = where(d<1, d, 1)
-        c = where(c<1, c, 1)
-        d = ceil(d*10)
-        c = ceil(c*10)
-        dc = d*10 + c
-        #import pdb; pdb.set_trace()
-        
-        return dc
-        
-            
-    # Figure for div and curl:
-    # NOT WORKING!
-    plotfigure = plotdata.new_plotfigure(name='PS', figno=1)
-    plotfigure.show = False
+
+    # Figure for trace(sigma) and sigma_12 side by side
+    plotfigure = plotdata.new_plotfigure(name='P and S waves', figno=11)
+    plotfigure.kwargs = {'figsize':(15,10)}
 
     # Set up for axes in this figure:
     plotaxes = plotfigure.new_plotaxes()
+    plotaxes.axescmd = 'axes([.1,.6,.35,.4])' # 'subplot(221)'
     plotaxes.xlimits = 'auto'
     plotaxes.ylimits = 'auto'
-    plotaxes.title = 'P- and S-waves'
+    plotaxes.title = 'trace(sigma)'
     plotaxes.scaled = True
     plotaxes.afteraxes = plot_interfaces
 
     # Set up for item on these axes:
     plotitem = plotaxes.new_plotitem(plot_type='2d_pcolor')
-    plotitem.plot_var = divcurl
-    plotitem.pcolor_cmap = RXBmap
-    plotitem.pcolor_cmin = 0.
-    plotitem.pcolor_cmax = 100
+    plotitem.plot_var = sigmatr
+    plotitem.pcolor_cmap = colormaps.blue_white_red
+    plotitem.pcolor_cmin = -0.005
+    plotitem.pcolor_cmax = 0.005
     plotitem.add_colorbar = False
     plotitem.amr_celledges_show = [False]
-    plotitem.amr_patchedges_show = [False]
+    plotitem.amr_patchedges_show = [0]
 
-    # Figure for div and curl side by side
-    plotfigure = plotdata.new_plotfigure(name='div curl', figno=11)
-    plotfigure.kwargs = {'figsize':(12,5)}
-
-    # Set up for axes in this figure:
     plotaxes = plotfigure.new_plotaxes()
-    plotaxes.axescmd = 'subplot(121)'
+    plotaxes.axescmd = 'axes([.5,.6,.45,.4])' # 'subplot(222)'
     plotaxes.xlimits = 'auto'
     plotaxes.ylimits = 'auto'
-    plotaxes.title = 'div(u) shows P-waves'
+    plotaxes.title = 'sigma_12'
+    plotaxes.scaled = True
+    plotaxes.afteraxes = plot_interfaces
+
+    # Set up for item on these axes:
+    plotitem = plotaxes.new_plotitem(plot_type='2d_pcolor')
+    plotitem.plot_var = 2
+    plotitem.pcolor_cmap = colormaps.blue_white_red
+    plotitem.pcolor_cmin = -0.005
+    plotitem.pcolor_cmax = 0.005
+    plotitem.add_colorbar = True
+    plotitem.colorbar_shrink = 0.7
+    plotitem.amr_celledges_show = [False]
+    plotitem.amr_patchedges_show = [0]
+
+
+    plotaxes = plotfigure.new_plotaxes()
+    plotaxes.axescmd = 'axes([.1,.1,.35,.4])' # 'subplot(223)'
+    plotaxes.xlimits = 'auto'
+    plotaxes.ylimits = 'auto'
+    plotaxes.title = 'div(u)'
     plotaxes.scaled = True
     plotaxes.afteraxes = plot_interfaces
 
@@ -191,25 +145,19 @@ def setplot(plotdata):
     plotitem = plotaxes.new_plotitem(plot_type='2d_pcolor')
     plotitem.plot_var = div
     plotitem.pcolor_cmap = colormaps.blue_white_red
-    plotitem.pcolor_cmin = -0.3
-    plotitem.pcolor_cmax = 0.3
+    plotitem.pcolor_cmin = -0.2
+    plotitem.pcolor_cmax = 0.2
     plotitem.add_colorbar = False
     plotitem.amr_celledges_show = [False]
-    plotitem.amr_patchedges_show = [1]
+    plotitem.amr_patchedges_show = [0]
 
-    #plotitem = plotaxes.new_plotitem(plot_type='2d_contour')
-    #plotitem.plot_var = div
-    #plotitem.contour_levels = np.linspace(-0.3,0.3,4)
 
     # Figure for curl:
-    # plotfigure = plotdata.new_plotfigure(name='curl', figno=12)
-
-    # Set up for axes in this figure:
     plotaxes = plotfigure.new_plotaxes()
-    plotaxes.axescmd = 'subplot(122)'
+    plotaxes.axescmd = 'axes([.5,.1,.45,.4])' # 'subplot(224)'
     plotaxes.xlimits = 'auto'
     plotaxes.ylimits = 'auto'
-    plotaxes.title = 'curl(u) shows S-waves'
+    plotaxes.title = 'curl(u)'
     plotaxes.scaled = True
     plotaxes.afteraxes = plot_interfaces
 
@@ -217,24 +165,30 @@ def setplot(plotdata):
     plotitem = plotaxes.new_plotitem(plot_type='2d_pcolor')
     plotitem.plot_var = curl
     plotitem.pcolor_cmap = colormaps.blue_white_red
-    plotitem.pcolor_cmin = -0.3
-    plotitem.pcolor_cmax = 0.3
-    plotitem.add_colorbar = False
+    plotitem.pcolor_cmin = -0.2
+    plotitem.pcolor_cmax = 0.2
+    plotitem.add_colorbar = True
+    plotitem.colorbar_shrink = 0.7
     plotitem.amr_celledges_show = [False]
+    plotitem.amr_patchedges_show = [0]
+
+
+
+    # Figure for grid cells
+    plotfigure = plotdata.new_plotfigure(name='cells', figno=2)
+
+    # Set up for axes in this figure:
+    plotaxes = plotfigure.new_plotaxes()
+    plotaxes.xlimits = [0,2]
+    plotaxes.ylimits = [0,1]
+    plotaxes.title = 'Grid patches'
+    plotaxes.scaled = True
+
+    # Set up for item on these axes:
+    plotitem = plotaxes.new_plotitem(plot_type='2d_patch')
+    plotitem.amr_patch_bgcolor = ['#ffeeee', '#eeeeff', '#eeffee', '#ffffff']
+    plotitem.amr_celledges_show = [1,0,0]
     plotitem.amr_patchedges_show = [1]
-
-    if 0:
-        # Set up for item on these axes:
-        plotitem = plotaxes.new_plotitem(plot_type='2d_contour')
-        plotitem.show = False
-        plotitem.plot_var = curl
-        plotitem.contour_nlevels = 2
-        plotitem.contour_min = 0.01
-        plotitem.contour_max = .5
-        plotitem.contour_colors = 'r'
-        plotitem.amr_celledges_show = [False]
-        plotitem.amr_patchedges_show = [False]
-
 
 
     #-----------------------------------------
