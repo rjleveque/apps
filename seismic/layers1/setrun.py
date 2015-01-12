@@ -243,7 +243,7 @@ def setrun(claw_pkg='amrclaw'):
     # ---------------
     gauges = rundata.gaugedata.gauges 
     # for gauges append lines of the form  [gaugeno, x, y, t1, t2]
-    for gaugeno,x in enumerate(np.linspace(0.1,1.9,40)):
+    for gaugeno,x in enumerate(np.linspace(0.2,1.9,18)):
         gauges.append([gaugeno,x,0.99,0,1e10])
 
                   
@@ -331,6 +331,9 @@ def setrun(claw_pkg='amrclaw'):
     regions = rundata.regiondata.regions 
     # to specify regions of refinement append lines of the form
     #  [minlevel,maxlevel,t1,t2,x1,x2,y1,y2]
+    regions.append([1,2,0,1e9, 0,2, 0,1])
+    regions.append([1,4,0,0.8, 0,2, 0,1])
+    regions.append([1,4,0,1e9, 1,2, 0.4,1])
     regions.append([3,4,0,0.1,.95,1.05,0.9,1.])
 
 

@@ -200,6 +200,17 @@ def setplot(plotdata):
 
     # Set up for axes in this figure:
     plotaxes = plotfigure.new_plotaxes()
+    plotaxes.axescmd = 'subplot(2,1,1)'
+    plotaxes.ylimits = 'auto'
+    plotaxes.title = 'Horizontal velocity'
+
+    # Plot surface as blue curve:
+    plotitem = plotaxes.new_plotitem(plot_type='1d_plot')
+    plotitem.plot_var = 3
+    plotitem.plotstyle = 'b-'
+
+    plotaxes = plotfigure.new_plotaxes()
+    plotaxes.axescmd = 'subplot(2,1,2)'
     plotaxes.ylimits = 'auto'
     plotaxes.title = 'Vertical velocity'
 
