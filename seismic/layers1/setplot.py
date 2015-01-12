@@ -107,8 +107,8 @@ def setplot(plotdata):
     plotitem = plotaxes.new_plotitem(plot_type='2d_pcolor')
     plotitem.plot_var = sigmatr
     plotitem.pcolor_cmap = colormaps.blue_white_red
-    plotitem.pcolor_cmin = -0.005
-    plotitem.pcolor_cmax = 0.005
+    plotitem.pcolor_cmin = -0.003
+    plotitem.pcolor_cmax = 0.003
     plotitem.add_colorbar = False
     plotitem.amr_celledges_show = [False]
     plotitem.amr_patchedges_show = [0]
@@ -125,8 +125,8 @@ def setplot(plotdata):
     plotitem = plotaxes.new_plotitem(plot_type='2d_pcolor')
     plotitem.plot_var = 2
     plotitem.pcolor_cmap = colormaps.blue_white_red
-    plotitem.pcolor_cmin = -0.005
-    plotitem.pcolor_cmax = 0.005
+    plotitem.pcolor_cmin = -0.003
+    plotitem.pcolor_cmax = 0.003
     plotitem.add_colorbar = True
     plotitem.colorbar_shrink = 0.7
     plotitem.amr_celledges_show = [False]
@@ -145,8 +145,8 @@ def setplot(plotdata):
     plotitem = plotaxes.new_plotitem(plot_type='2d_pcolor')
     plotitem.plot_var = div
     plotitem.pcolor_cmap = colormaps.blue_white_red
-    plotitem.pcolor_cmin = -0.2
-    plotitem.pcolor_cmax = 0.2
+    plotitem.pcolor_cmin = -0.1
+    plotitem.pcolor_cmax = 0.1
     plotitem.add_colorbar = False
     plotitem.amr_celledges_show = [False]
     plotitem.amr_patchedges_show = [0]
@@ -165,8 +165,8 @@ def setplot(plotdata):
     plotitem = plotaxes.new_plotitem(plot_type='2d_pcolor')
     plotitem.plot_var = curl
     plotitem.pcolor_cmap = colormaps.blue_white_red
-    plotitem.pcolor_cmin = -0.2
-    plotitem.pcolor_cmax = 0.2
+    plotitem.pcolor_cmin = -0.1
+    plotitem.pcolor_cmax = 0.1
     plotitem.add_colorbar = True
     plotitem.colorbar_shrink = 0.7
     plotitem.amr_celledges_show = [False]
