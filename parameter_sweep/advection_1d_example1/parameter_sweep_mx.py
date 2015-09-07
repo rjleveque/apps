@@ -2,7 +2,9 @@
 Sample code to run many instances of clawpack in parallel for a
 parameter study.
 
-In this example the grid resolution is changed.  mx is number of cells.
+In this example the grid resolution is changed.  
+`mx` refers to the number of cells here, used to set
+`rundata.clawdata.num_cells[0]` after executing `setrun`.
 
 The function make_all_cases returns *caselist*, a list of 
 dictionaries.  Each dictionary should define whatever parameters

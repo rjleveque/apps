@@ -7,14 +7,11 @@ function setplot is called to set the plot parameters.
     
 """ 
 
-#from clawpack.clawutil.data import ClawData
-#probdata = ClawData()
-#probdata.read('setprob.data', force=True)
 
 from setrun import setrun
-clawdata = setrun('classic')
-u = clawdata.probdata.u
-beta = clawdata.probdata.beta
+rundata = setrun('classic')
+u = rundata.probdata.u
+beta = rundata.probdata.beta
 print "Parameters: u = %g, beta = %g" % (u, beta)
 
 
