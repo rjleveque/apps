@@ -97,8 +97,8 @@ def setplot(plotdata):
     # Set up for axes in this figure:
     plotaxes = plotfigure.new_plotaxes()
     plotaxes.axescmd = 'axes([.1,.6,.35,.4])' # 'subplot(221)'
-    plotaxes.xlimits = 'auto'
-    plotaxes.ylimits = 'auto'
+    plotaxes.xlimits = [0,2]
+    plotaxes.ylimits = [0,1]
     plotaxes.title = 'trace(sigma)'
     plotaxes.scaled = True
     plotaxes.afteraxes = plot_interfaces
@@ -115,8 +115,8 @@ def setplot(plotdata):
 
     plotaxes = plotfigure.new_plotaxes()
     plotaxes.axescmd = 'axes([.5,.6,.45,.4])' # 'subplot(222)'
-    plotaxes.xlimits = 'auto'
-    plotaxes.ylimits = 'auto'
+    plotaxes.xlimits = [0,2]
+    plotaxes.ylimits = [0,1]
     plotaxes.title = 'sigma_12'
     plotaxes.scaled = True
     plotaxes.afteraxes = plot_interfaces
@@ -135,8 +135,8 @@ def setplot(plotdata):
 
     plotaxes = plotfigure.new_plotaxes()
     plotaxes.axescmd = 'axes([.1,.1,.35,.4])' # 'subplot(223)'
-    plotaxes.xlimits = 'auto'
-    plotaxes.ylimits = 'auto'
+    plotaxes.xlimits = [0,2]
+    plotaxes.ylimits = [0,1]
     plotaxes.title = 'div(u)'
     plotaxes.scaled = True
     plotaxes.afteraxes = plot_interfaces
@@ -155,8 +155,8 @@ def setplot(plotdata):
     # Figure for curl:
     plotaxes = plotfigure.new_plotaxes()
     plotaxes.axescmd = 'axes([.5,.1,.45,.4])' # 'subplot(224)'
-    plotaxes.xlimits = 'auto'
-    plotaxes.ylimits = 'auto'
+    plotaxes.xlimits = [0,2]
+    plotaxes.ylimits = [0,1]
     plotaxes.title = 'curl(u)'
     plotaxes.scaled = True
     plotaxes.afteraxes = plot_interfaces
