@@ -93,7 +93,7 @@ def setrun(claw_pkg='geoclaw'):
     clawdata.num_eqn = 3
 
     # Number of auxiliary variables in the aux array (initialized in setaux)
-    clawdata.num_aux = 4 + 3 + 2
+    clawdata.num_aux = 4 + 3
 
     # Index of aux array corresponding to capacity function, if there is one:
     clawdata.capa_index = 2
@@ -432,8 +432,8 @@ def set_storm(rundata):
 
     # Source term controls - These are currently not respected
     data.wind_forcing = True
-    data.drag_law = 2
     data.pressure_forcing = True
+    data.drag_law = 2
 
     # AMR parameters - m/s for wind refinement and (m) for radius
     data.wind_refine = [20.0, 40.0, 60.0]
