@@ -29,7 +29,7 @@ def setplot(plotdata):
     
 
     plotdata.clearfigures()  # clear any old figures,axes,items data
-    plotdata.format = 'binary'
+    plotdata.format = 'ascii'
 
     fig_num_counter = surge.figure_counter()
 
@@ -290,6 +290,7 @@ def setplot(plotdata):
     plotdata.latex_figsperline = 2           # layout of plots
     plotdata.latex_framesperline = 1         # layout of plots
     plotdata.latex_makepdf = False           # also run pdflatex?
+    plotdata.parallel = True
 
     return plotdata
 
