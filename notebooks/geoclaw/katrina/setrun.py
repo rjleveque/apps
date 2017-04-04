@@ -21,7 +21,7 @@ import clawpack.geoclaw.topotools as topotools
 import clawpack.geoclaw.etopotools as etopotools
 
 # Landfall of hurricane 1110 UTC (6:10 a.m. CDT) on Monday, August 29, 2005
-katrina_landfall = datetime.datetime(2005, 8, 29, 6)     \
+katrina_landfall = datetime.datetime(2005, 8, 28, 6)     \
                  - datetime.datetime(2005, 1, 1, 0)
 
 #                           days   s/hour    hours/day
@@ -140,8 +140,7 @@ def setrun(claw_pkg='geoclaw'):
         clawdata.total_steps = 1
         clawdata.output_t0 = True
         
-
-    clawdata.output_format = 'binary'      # 'ascii' or 'netcdf' 
+    clawdata.output_format = 'ascii'      # 'ascii' or 'netcdf'
 
     clawdata.output_q_components = 'all'   # could be list such as [True,True]
     clawdata.output_aux_components = 'all' # could be list
@@ -276,18 +275,17 @@ def setrun(claw_pkg='geoclaw'):
     amrdata.amr_levels_max = 1
 
     # List of refinement ratios at each level (length at least mxnest-1)
-    amrdata.refinement_ratios_x = [2,2,3,4,4,4]
-    amrdata.refinement_ratios_y = [2,2,3,4,4,4]
-    amrdata.refinement_ratios_t = [2,2,3,4,4,4]
+    amrdata.refinement_ratios_x = [2, 2, 3, 4, 4, 4]
+    amrdata.refinement_ratios_y = [2, 2, 3, 4, 4, 4]
+    amrdata.refinement_ratios_t = [2, 2, 3, 4, 4, 4]
 
 
     # Specify type of each aux variable in amrdata.auxtype.
     # This must be a list of length maux, each element of which is one of:
     #   'center',  'capacity', 'xleft', or 'yleft'  (see documentation).
 
-    amrdata.aux_type = ['center','capacity','yleft','center','center','center',
-                         'center', 'center', 'center']
-
+    amrdata.aux_type = ['center', 'capacity', 'yleft', 'center', 'center',
+                        'center', 'center', 'center', 'center']
 
     # Flag using refinement routine flag2refine rather than richardson error
     amrdata.flag_richardson = False    # use Richardson?
@@ -305,10 +303,9 @@ def setrun(claw_pkg='geoclaw'):
     amrdata.clustering_cutoff = 0.700000
 
     # print info about each regridding up to this level:
-    amrdata.verbosity_regrid = 0  
+    amrdata.verbosity_regrid = 0
 
-
-    #  ----- For developers ----- 
+    #  ----- For developers -----
     # Toggle debugging print statements:
     amrdata.dprint = False      # print domain flags
     amrdata.eprint = False      # print err est flags
@@ -320,9 +317,9 @@ def setrun(claw_pkg='geoclaw'):
     amrdata.sprint = False      # space/memory output
     amrdata.tprint = False      # time step reporting each level
     amrdata.uprint = False      # update/upbnd reporting
-    
+
     # More AMR parameters can be set -- see the defaults in pyclaw/data.py
-    
+
     # == setregions.data values ==
     regions = rundata.regiondata.regions
     # to specify regions of refinement append lines of the form
@@ -377,7 +374,7 @@ def setgeo(rundata):
     geo_data.friction_depth = 1e10
 
     # == Algorithm and Initial Conditions ==
-    geo_data.sea_level = 0.28  # Due to seasonal swelling of gulf
+    geo_data.sea_level = 0.0
     geo_data.dry_tolerance = 1.e-2
 
     # Refinement Criteria

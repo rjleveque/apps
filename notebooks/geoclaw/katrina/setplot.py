@@ -53,8 +53,8 @@ def setplot(plotdata):
                                         track, landfall, plot_direction=False)
 
     # Limits for plots
-    full_xlimits = [-99.0,-50.0]
-    full_ylimits = [8.0,32.0]
+    full_xlimits = [-99.0, -75.0]
+    full_ylimits = [15.0, 32.0]
     full_shrink = 0.5
 
     # Color limits
@@ -69,10 +69,10 @@ def setplot(plotdata):
     surface_limits = [eta[0]-surface_range,eta[0]+surface_range]
     speed_limits = [0.0,speed_range]
     
-    wind_limits = [0,40]
+    wind_limits = [0, 60]
     # wind_limits = [-0.002,0.002]
-    pressure_limits = [966,1013]
-    friction_bounds = [0.01,0.04]
+    pressure_limits = [930,1013]
+    friction_bounds = [0.01, 0.04]
     # vorticity_limits = [-1.e-2,1.e-2]
 
     def pcolor_afteraxes(current_data):
