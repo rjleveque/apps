@@ -12,10 +12,10 @@ project:
       template: plain_latex_book
       output: exports/clawpack-apps.pdf
   toc:
-    - file: intro.md
+    - file: docs/intro.md
     - title: Overview and introduction
       children:
-        - file: intro.md
+        - file: docs/intro.md
     - title: amrclaw notebooks
       children:
         - file: notebooks/amrclaw/RuledRectangles.ipynb
