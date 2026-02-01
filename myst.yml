@@ -16,12 +16,18 @@ project:
     - title: Overview and introduction
       children:
         - file: docs/intro.md
-    - title: geoclaw notebooks
+
+    - title: visclaw notebooks
       children:
-        - file: notebooks/geoclaw/topotools_examples.ipynb
+        - file: notebooks/visclaw/animation_tools_demo.ipynb
+        - file: notebooks/visclaw/gridtools.ipynb
+        - file: notebooks/visclaw/pcolorcells.ipynb
     - title: amrclaw notebooks
       children:
         - file: notebooks/amrclaw/RuledRectangles.ipynb
+    - title: geoclaw notebooks
+      children:
+        - file: notebooks/geoclaw/topotools_examples.ipynb
     - title: Resources
       children:
         - file: docs/biblio.md
