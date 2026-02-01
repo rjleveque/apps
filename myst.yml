@@ -18,7 +18,7 @@ project:
         - file: docs/intro.md
     - title: geoclaw notebooks
       children:
-        - file: notebooks/geoclaw/topo_func_demo.ipynb
+        - file: notebooks/geoclaw/topotools_examples.ipynb
     - title: amrclaw notebooks
       children:
         - file: notebooks/amrclaw/RuledRectangles.ipynb
