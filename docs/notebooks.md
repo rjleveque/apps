@@ -23,6 +23,17 @@ submit a pull request to the apps repository.
 :::{warning}
 The notebooks are not rendering properly on Github, so the output will not
 be seen.
+
+You can run them locally via:
+    
+    git clone https://github.com/rjleveque/apps.git
+    cd apps
+    git fetch origin jupyter-book:jupyter-book
+    git checkout jupyter-book
+    jupyter book start --execute
+
+but some of the visclaw notebooks throw errors due to sample data files not
+being found.  Work in Progress.
 :::
 
 (notebooks_pyclaw)=

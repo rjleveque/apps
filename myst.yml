@@ -12,11 +12,13 @@ project:
       template: plain_latex_book
       output: exports/clawpack-apps.pdf
   toc:
-    - file: docs/intro.md
+    - file: docs/index.md
     - title: Overview and introduction
       children:
         - file: docs/intro.md
-
+    - title: Jupyter notebooks
+      children:
+        - file: docs/notebooks.md
     - title: visclaw notebooks
       children:
         - file: notebooks/visclaw/animation_tools_demo.ipynb
