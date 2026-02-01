@@ -1,0 +1,10 @@
+# Some things that must be pip installed on Github to build the jupyter book
+matplotlib
+numpy
+scipy
+ghp-import
+clawpack
+netCDF4
+cloudpathlib
+folium
+pyvista

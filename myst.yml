@@ -1,0 +1,30 @@
+version: 1
+project:
+  title: clawpack-apps
+  authors:
+    - name: Clawpack Development Team
+  copyright: '2026'
+  github: clawpack/apps
+  bibliography:
+    - docs/references.bib
+  exports:
+    - format: pdf
+      template: plain_latex_book
+      output: exports/clawpack-apps.pdf
+  toc:
+    - file: intro.md
+    - title: Overview and introduction
+      children:
+        - file: intro.md
+    - title: amrclaw notebooks
+      children:
+        - file: notebooks/amrclaw/RuledRectangles.ipynb
+    - title: Resources
+      children:
+        - file: docs/biblio.md
+site:
+  options:
+    logo: images/clawlogo.jpg
+    favicon: images/clawicon.ico
+    folders: true
+  template: book-theme
