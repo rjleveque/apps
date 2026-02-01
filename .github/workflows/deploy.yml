@@ -42,12 +42,12 @@ jobs:
         run: pip install -r requirements.txt
       - name: Build HTML Assets
         run: npx myst build --html --execute
-        run: ls ./docs
         working-directory: docs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
+        working-directory: docs
         with:
-          path: "./docs/_build/html"
+          path: "_build/html"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
