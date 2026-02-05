@@ -9,3 +9,5 @@ cloudpathlib
 folium
 pyvista
 ipykernel
+jupyter-book
+notebook
