@@ -11,3 +11,4 @@ pyvista
 ipykernel
 jupyter-book
 notebook
+ipywidgets

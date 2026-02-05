@@ -19,6 +19,9 @@ project:
     - title: Jupyter notebooks
       children:
         - file: docs/notebooks.md
+    - title: pyclaw notebooks
+      children:
+        - file: notebooks/pyclaw/Acoustics-1D.ipynb
     - title: visclaw notebooks
       children:
         - file: notebooks/visclaw/animation_tools_demo.ipynb
