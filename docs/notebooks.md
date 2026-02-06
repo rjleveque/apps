@@ -1,5 +1,5 @@
 (notebooks_intro)=
-# Jupyter notebooks
+# Overview of notebooks
 
 The Jupyter notebook is a very nice platform for illustrating Clawpack examples.
 
