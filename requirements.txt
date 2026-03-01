@@ -13,3 +13,4 @@ notebook
 ipywidgets
 ffmpeg
 meson-python
+bokeh
