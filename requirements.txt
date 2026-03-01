@@ -12,3 +12,4 @@ jupyter-book
 notebook
 ipywidgets
 ffmpeg
+mesonpy
