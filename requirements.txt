@@ -3,7 +3,6 @@ matplotlib
 numpy
 scipy
 ghp-import
-clawpack
 netCDF4
 cloudpathlib
 folium

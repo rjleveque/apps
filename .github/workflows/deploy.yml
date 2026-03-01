@@ -39,7 +39,12 @@ jobs:
         working-directory: docs
       - name: Install dependencies
         # specific to clawpack/apps:
-        run: pip install -r requirements.txt
+        run: |
+            pip install -r requirements.txt
+            pip install --src=${{ github.workspace }} --user --no-build-isolation -e git+https://github.com/clawpack/clawpack.git@v5.14.0#egg=clawpack
+            export CLAW=${{ github.workspace }}/clawpack
+            ls -la ${{ github.workspace }}
+
       - name: Build HTML Assets
         run: npx myst build --html --execute
         working-directory: docs
