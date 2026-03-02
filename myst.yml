@@ -36,6 +36,7 @@ project:
         - title: geoclaw notebooks
           children:
             - file: notebooks/geoclaw/topotools_examples.ipynb
+            - file: notebooks/geoclaw/chile2010a/chile2010a.ipynb
     - title: Resources
       children:
         - file: docs/biblio.md
